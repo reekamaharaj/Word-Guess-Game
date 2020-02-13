@@ -24,10 +24,43 @@ const abc=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","
 // Array of possible words
 
 //Set up for what will happen when a key is pressed
+document.onkeyup = function(event){
+    userGuess = event.key;
+    userGuess = userGuess.toLowerCase();
+
+    if(userGuess != 0){
+
+        // Check to see that the userGuess is valid. If it isn't, then an alert will ask for a letter
+        if (abc.includes(userGuess){
+
+            if(guesses.includes(userGuess)){
+                alert('Already guessed');
+            }
+
+        })
+
+        else {
+            alert('Enter a letter');
+        }
+
+        // If the guessCount get to zero, then the game is over, the guesses are erased, guessCount is reset and a new word is generated. Game starts over
+        if (guessCount === 0) {
+            loss++;
+            guessCount = 10; //Or whatever it is suppoed to be...
+            guesses = [ ];
+
+            alert("Sorry, you didn't guess the word.");
+        }
+
+    }
+}
+
+// below, this will add the number of guesses left to the HTML page
+// document.getElementById("guessesLeft").innerText = guessCount;
 
 
-
-
+// below, this will add the number of losses to the HTML page
+// document.getElementById("loss").innerText = loss;
 
 
 /*  Word guess game
