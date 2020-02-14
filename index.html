@@ -18,24 +18,44 @@
     </h1>
 </div>
  <div class="bg-orange-500 p-2">
-     <div class="bg-orange-700 text-orange-300 p-4 text-lg leading-loose rounded-full text-center m-4 border-double border-red-900 border-8">
+     <div class="bg-orange-700 text-orange-300 p-4 text-lg leading-loose rounded-full  m-4 border-double border-red-900 border-8">
 
-        Word Guess Game <br>
-
-        Press any key to start! <br>
-        
-        Wins: <br>
-        
-        Losses: <br>
-        
-        Guesses left: <br>
+        <div class="text-left px-20">
+    
+            <div class="text-center">Press any key to start! <br></div>
+            
+            Wins: <div id="win"></div>
+            <br> 
+            
+            Loss: <div id="loss"></div>
+            <br>
+            
+            Guesses left: <div id="guessesLeft"></div>
+            <br>
+        </div>
 
      </div>
 
-     <div class="p-4 bg-red-900 rounded-full m-4 text-center text-orange-300 text-xl border-double border-orange-700 border-8">Guesses So Far: </div>
+     <div class="p-4 bg-red-900 rounded-full m-4 text-center text-orange-300 text-xl border-double border-orange-700 border-8">
+
+         Guesses So Far: <div id="guesses"></div>
+
+     </div>
  </div>
 
 
     <script src="assets/javascript/game.js"></script>
 </body>
 </html>
+
+<!-- Theme. Cats.
+
+Make it look like a giant cat face :3 with ears and whiskers. Whiskers twitch when a correct answer is picked. Purr noise when a correct answer is picked. 
+
+Meow on win. Sad cat noise at loss. 
+
+Other theme ideas. 
+Beach
+Science
+Fruit
+Clothes -->
