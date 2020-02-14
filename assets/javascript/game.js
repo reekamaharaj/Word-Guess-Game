@@ -13,7 +13,7 @@ let correctGuesses = [ ];
 let win = 0;
 
 // To keep track of guesses avaliable, undefined right now, See if this is a fixed value or if it changes depending on the word
-let guessCount;
+let guessCount = 10;
 
 // Keep track of loss
 let loss = 0;
@@ -39,23 +39,41 @@ document.onkeyup = function(event){
 
         word = words[Math.floor(Math.random()*words.length)];
         console.log(word);
+        //creates an onscreen visual that shows how many letters are in the word
+        var solution = [ ];
+        for (var i=0; i < word.length; i++){
+            solution[i] = "_ ";
+        }
+        wordlength = word.length;
+        document.getElementById("word").innerText = solution.join('  ');
 
     }
 
     if (userGuess != 0){
 
+        //checks to see if the guess is valid
         if (abc.includes(userGuess)){
-
+            //if the guess is valid, checks to see if the guess is in the word
             if (word.includes(userGuess) === true ){
-
+                //if the guess has already been guessed it will say so
                 if (correctGuesses.includes(userGuess)){
                     alert('Already guessed');
                 }
-
+                //the guess will be added into an array so that the correct guess cant be guessed again
                 else {
-                console.log('thats in the word');
                 correctGuesses.push(userGuess);
-                console.log(correctGuesses);
+                    // Will check where the letter is in the array and change the _ to the letter
+                    for(var x=0; i < word.length; x++){
+                        if (word[x] === userGuess) {
+                            solution[x] = userGuess;
+                            document.getElementById("word").innerText = solution.join("  ");
+                        }
+                        else {
+                            solution[i] = "_  ";
+                            document.getElementById("word").innerText = solution.join("  ");
+                        }
+
+                    }
 
                 }
 
@@ -71,7 +89,8 @@ document.onkeyup = function(event){
                 else {
                     guessCount--;
                     guesses.push(userGuess);
-                    console.log('try again');
+                    document.getElementById("guessesLeft").innerText = guessCount;
+                    document.getElementById("guesses").innerText = guesses;
                 }
             }
         }
@@ -88,6 +107,7 @@ document.onkeyup = function(event){
             loss++;
             guessCount = 10; //Or whatever it is suppoed to be...
             guesses = [ ];
+            correctGuesses = [ ];
             document.getElementById("loss").innerText = loss;
             document.getElementById("guessesLeft").innerText = guessCount;
             document.getElementById("win").innerText = win;
@@ -109,7 +129,7 @@ TODO:
 
 [x] Check to see if userGuess is in the word
 [x] if yes, then get another guess, 
-- if no then the guesses count will go down by one. 
+[x] if no then the guesses count will go down by one. 
 - if userGuess is in word multiple times, account for that
 [x] User will be notifed if they have guessed the same thing already
 
