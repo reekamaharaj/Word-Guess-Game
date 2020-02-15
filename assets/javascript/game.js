@@ -37,6 +37,9 @@ const abc = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q"
 
 const words = ['ANGORA' , 'ALLEY' , 'TIGER' , 'BOBCAT' , 'BURMESE' , 'CALICO' , 'TABBY' , 'LEOPARD' , 'CHEETAH' , 'COUGAR' , 'GINGER' , 'FELINE' , 'HIMALAYAN' , 'JAGUAR' , 'KITTEN' , 'LION' , 'LYNX' , 'MANX' , 'WEDGIE', 'OCELOT' , 'PANTHER' , 'PERSIAN' , 'PUMA' , 'SIAMESE' , 'TOM' , 'TIGER']
 
+var audioElement = document.createElement("audio");
+audioElement.setAttribute("src", "assets/javascript/catsound.mp3");
+
 //Set up for what will happen when a key is pressed0 (General keys)
 
 document.onkeyup = function(event){
@@ -123,11 +126,14 @@ function checkIfWin() {
         win++;
         document.getElementById("word").innerText = solution.join('  ');
         reset();
+        audioElement.play();
         setTimeout(function () {
             alert('You win!');
         }, 0);
     }
 }
+
+
 
 function gameStart() {
     if (word === undefined) {
@@ -158,26 +164,26 @@ function gameStart() {
 
 /*  Word guess game
 TODO:
-[x] event key to listen for letter the player guesses -> same as the previous one. 
+- [x] event key to listen for letter the player guesses -> same as the previous one. 
 
-[x] make an array for the words the computer can choose from
-[x] random choice will be picked from the array of words
-[x] Set up a visual that shows how many letters are in the word
-[x] When letter is guessed correctly, the letter will be shown in the location it is in the word
-[x] Check to see if userGuess is in the word
-[x] if yes, then get another guess, 
-[x] if no then the guesses count will go down by one. 
-[x] if userGuess is in word multiple times, account for that
-[x] User will be notifed if they have guessed the same thing already
+- [x] make an array for the words the computer can choose from
+- [x] random choice will be picked from the array of words
+- [x] Set up a visual that shows how many letters are in the word
+- [x] When letter is guessed correctly, the letter will be shown in the location it is in the word
+- [x] Check to see if userGuess is in the word
+- [x] if yes, then get another guess, 
+- [x] if no then the guesses count will go down by one. 
+- [x] if userGuess is in word multiple times, account for that
+- [x] User will be notifed if they have guessed the same thing already
 
-[x] example of visual if the word is 'madonna' display it like:
+- [x] example of visual if the word is 'madonna' display it like:
 _ _ _ _ _ _ _ when the game starts and fill it in as the game progresses
 'm a d o _ _ a'
 
 -- extra --
 
-- Play a sound or song when the user guesses the word
-- Design to match the game, set a game theme
-- Add homeworks to portfolio with linkes to the github pages
+- [x] Play a sound or song when the user guesses the word
+- [ ]Design to match the game, set a game theme
+- [x] Add homeworks to portfolio with linkes to the github pages
 
 */
