@@ -1,7 +1,7 @@
 // variables
 
 // Store the user's guess
-let userGuess = 0;
+let userGuess;
 
 // Keep track of guesses
 let guesses = [ ];
@@ -21,10 +21,14 @@ let loss = 0;
 //randomly chosen word
 let word; 
 
+//container for answer, needed for visual representation
+let solution = [ ];
+
+//length of word
+let wordLength;
+
 // Array of the possible options that are acceptable guesses
 const abc = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-
-
 
 //Array of possible words 
 
@@ -39,15 +43,14 @@ document.onkeyup = function(event){
 
         word = words[Math.floor(Math.random()*words.length)];
         console.log(word);
-        //creates an onscreen visual that shows how many letters are in the word
-        var solution = [ ];
+
         for (var i=0; i < word.length; i++){
             solution[i] = "_ ";
         }
-        wordlength = word.length;
+        wordLength = word.length;
         document.getElementById("word").innerText = solution.join('  ');
-
     }
+        //creates an onscreen visual that shows how many letters are in the word
 
     if (userGuess != 0){
 
@@ -63,29 +66,31 @@ document.onkeyup = function(event){
                 else {
                 correctGuesses.push(userGuess);
                     // Will check where the letter is in the array and change the _ to the letter
-                    for(var x=0; i < word.length; x++){
-                        if (word[x] === userGuess) {
-                            solution[x] = userGuess;
-                            document.getElementById("word").innerText = solution.join("  ");
-                        }
-                        else {
-                            solution[i] = "_  ";
-                            document.getElementById("word").innerText = solution.join("  ");
-                        }
 
+                    for (var i =0; i < word.length; i++){
+                        if (word[i] === userGuess){
+                            solution[i] = userGuess;
+                            document.getElementById("word").innerText = solution.join('  ');
+                            wordLength--;
+                        }
+                    }
+
+                    if (wordLength === 0){
+                        win++;
+                        document.getElementById("word").innerText = solution.join('  ');
+                        alert('You win!');
+                        reset();
                     }
 
                 }
-
-                //will need to put in what happens after finding the letter is in the word
             }
 
             else {
-
+                //checks if the letter has already been guessed
                 if (guesses.includes(userGuess)){
                     alert('Already guessed');
                 }
-
+                //if the guess is new and wrong then it will reduce the guessCout
                 else {
                     guessCount--;
                     guesses.push(userGuess);
@@ -105,35 +110,40 @@ document.onkeyup = function(event){
         // If the guessCount get to zero, then the game is over, the guesses are erased, guessCount is reset and a new word is generated. Game starts over
         if (guessCount === 0) {
             loss++;
-            guessCount = 10; //Or whatever it is suppoed to be...
-            guesses = [ ];
-            correctGuesses = [ ];
-            document.getElementById("loss").innerText = loss;
-            document.getElementById("guessesLeft").innerText = guessCount;
-            document.getElementById("win").innerText = win;
-            word = undefined;
             alert("Sorry, you didn't guess the word.");
+            reset();
         }
 
     }
 
+    function reset() {
+        guessCount =  10;
+        guesses = [ ];
+        correctGuesses = [ ];
+        word = undefined;
+        solution = [ ];
+        wordLength = 0;
+        document.getElementById("loss").innerText = loss;
+        document.getElementById("guessesLeft").innerText = guessCount;
+        document.getElementById("win").innerText = win;
+        document.getElementById("guesses").innerText = guesses;
+
+    }
 /*  Word guess game
 TODO:
 [x] event key to listen for letter the player guesses -> same as the previous one. 
 
 [x] make an array for the words the computer can choose from
 [x] random choice will be picked from the array of words
-
-- Set up a visual that shows how many letters are in the word
+[x] Set up a visual that shows how many letters are in the word
 - When letter is guessed correctly, the letter will be shown in the location it is in the word
-
 [x] Check to see if userGuess is in the word
 [x] if yes, then get another guess, 
 [x] if no then the guesses count will go down by one. 
-- if userGuess is in word multiple times, account for that
+[x] if userGuess is in word multiple times, account for that
 [x] User will be notifed if they have guessed the same thing already
 
-- example of visual if the word is 'madonna' display it like:
+[x] example of visual if the word is 'madonna' display it like:
 _ _ _ _ _ _ _ when the game starts and fill it in as the game progresses
 'm a d o _ _ a'
 
