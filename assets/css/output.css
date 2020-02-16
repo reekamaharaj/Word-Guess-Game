@@ -13965,6 +13965,10 @@ video {
   transition-duration: 1000ms;
 }
 
+.translate-y-18 {
+  --transform-translate-y: 4.5rem;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;
