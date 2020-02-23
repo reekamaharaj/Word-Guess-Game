@@ -86,6 +86,7 @@ document.onkeyup = function(event){
                     else {
                         guessCount--;
                         guesses.push(userGuess);
+                        nope();
                         document.getElementById("guessesLeft").innerText = guessCount;
                         document.getElementById("guesses").innerText = guesses;
                     }
@@ -101,12 +102,54 @@ document.onkeyup = function(event){
             // If the guessCount get to zero, then the game is over, the guesses are erased, guessCount is reset and a new word is generated. Game starts over
             if (guessCount === 0) {
                 loss++;
-                alert("Sorry, you didn't guess the word.");
+                frown();
+                setTimeout(function () {
+                    alert("Sorry, you didn't guess the word.");
+                }, 0);
                 reset();
-                gameStart()
+                gameStart();
             }
 
 }
+
+/*
+cat mouth states
+- [kissy face]: for correct guess
+- [3]: for correct word/win
+- [nope]: for wrong guess
+- [smile]: default 
+*/ 
+function kissyface(){
+    $('#kissyface').show();
+    $('#3').hide();
+    $('#nope').hide();
+    $('#smile').hide();
+    $('#frown').hide();
+}
+
+function mouth3(){
+    $('#kissyface').hide();
+    $('#3').show();
+    $('#nope').hide();
+    $('#smile').hide();
+    $('#frown').hide();
+}
+function nope(){
+    $('#kissyface').hide();
+    $('#3').hide();
+    $('#nope').show();
+    $('#smile').hide();
+    $('#frown').hide();
+}
+
+function smile(){
+    $('#kissyface').hide();
+    $('#3').hide();
+    $('#nope').hide();
+    $('#smile').show();
+    $('#frown').hide();
+}
+
 
     
 //functions
@@ -115,6 +158,7 @@ function letterCorrect() {
     for (var x = 0; x < word.length; x++) {
         if (word[x] === userGuess) {
             solution[x] = userGuess;
+            kissyface();
             document.getElementById("word").innerText = solution.join('  ');
             wordLength--;
         }
@@ -124,6 +168,7 @@ function letterCorrect() {
 function checkIfWin() {
     if (wordLength === 0) {
         win++;
+        mouth3();
         document.getElementById("word").innerText = solution.join('  ');
         reset();
         audioElement.play();
@@ -143,6 +188,7 @@ function gameStart() {
             solution[i] = "_ ";
         }
         wordLength = word.length;
+        smile();
         document.getElementById("word").innerText = solution.join('  ');
     }
     return i;
@@ -155,6 +201,7 @@ function gameStart() {
         correctGuesses = [ ];
         word = undefined;
         wordLength = undefined;
+        smile();
         document.getElementById("loss").innerText = loss;
         document.getElementById("guessesLeft").innerText = guessCount;
         document.getElementById("win").innerText = win;
@@ -183,7 +230,7 @@ _ _ _ _ _ _ _ when the game starts and fill it in as the game progresses
 -- extra --
 
 - [x] Play a sound or song when the user guesses the word
-- [ ]Design to match the game, set a game theme
+- [x]Design to match the game, set a game theme [made cat with CSS because... wanted to see if I could...]
 - [x] Add homeworks to portfolio with linkes to the github pages
 
 */

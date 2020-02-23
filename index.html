@@ -1,81 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="assets/css/output.css" />
-        <link
-            href="https://fonts.googleapis.com/css?family=EB+Garamond|Oswald&display=swap"
-            rel="stylesheet"
-        />
 
-        <title>Word Guess Game</title>
-    </head>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/output.css" />
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Oswald&display=swap" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <body>
+    <title>Word Guess Game</title>
+</head>
 
-        <p>STUFF</p>
-        <div class="bg-blue-900 p-4">
-            <h1 class="text-blue-200 text-center text-5xl tracking-tight">
-                Word Guess Game
-            </h1>
-            <h2 class="text-blue-200 text-center text-3xl tracking tight">
-                Theme: Cats
-            </h2>
-        </div>
+<body>
+    <div class="bg-blue-900 p-4">
+        <h1 class="text-blue-200 text-center text-5xl tracking-tight">
+            Word Guess Game
+        </h1>
+        <h2 class="text-blue-200 text-center text-3xl tracking tight">
+            Theme: Cats
+        </h2>
+    </div>
 
-        <div class="bg-orange-500 p-2 h-screen">
-            <div
-                class="bg-orange-700 text-orange-300 p-4 text-lg leading-loose m-4 border-double border-red-900 border-8"
-            >
-                <div class="text-left">
-                    <div class="text-center">
-                        Press the space key to start! <br />
-                    </div>
-                    <div class="flex flex-wrap -mx-px overflow-hidden">
-                        <div class="my-1 px-1 w-1/2 overflow-hidden">Win:</div>
-                        <div
-                            class="my-1 px-1 w-1/2 overflow-hidden"
-                            id="win"
-                        ></div>
-                        <div class="my-1 px-1 w-1/2 overflow-hidden">
-                            Losses:
-                        </div>
-                        <div
-                            class="my-1 px-1 w-1/2 overflow-hidden"
-                            id="loss"
-                        ></div>
-                        <div class="my-1 px-1 w-1/2 overflow-hidden">
-                            Guesses Left:
-                        </div>
-                        <div
-                            class="my-1 px-1 w-1/2 overflow-hidden"
-                            id="guessesLeft"
-                        ></div>
-                        <div class="my-1 px-1 w-1/2 overflow-hidden">
-                            Word to Guess
-                        </div>
-                        <div
-                            class="my-1 px-1 w-1/2 overflow-hidden text-xl"
-                            id="word"
-                        ></div>
-                    </div>
+    <div class="bg-orange-500 p-2 h-screen">
+        <div class="bg-orange-700 text-orange-300 p-4 text-lg leading-loose m-4 border-double border-red-900 border-8">
+            <div class="text-left">
+                <div class="text-center">
+                    Press the space key to start! <br/>
+                    Also. watch the kitty at the bottom :3
                 </div>
-            </div>
-            <div
-                class="p-4 bg-red-900 m-4 text-center text-orange-300 text-xl border-double border-orange-700 border-8"
-            >
                 <div class="flex flex-wrap -mx-px overflow-hidden">
-                    <div class="my-px px-px w-1/2 overflow-hidden">
-                        Guesses So Far:
+                    <div class="my-1 px-1 w-1/2 overflow-hidden">Win:</div>
+                    <div class="my-1 px-1 w-1/2 overflow-hidden" id="win"></div>
+                    <div class="my-1 px-1 w-1/2 overflow-hidden">
+                        Losses:
                     </div>
-                    <div
-                        class="my-px px-px w-1/2 overflow-hidden"
-                        id="guesses"
-                    ></div>
+                    <div class="my-1 px-1 w-1/2 overflow-hidden" id="loss"></div>
+                    <div class="my-1 px-1 w-1/2 overflow-hidden">
+                        Guesses Left:
+                    </div>
+                    <div class="my-1 px-1 w-1/2 overflow-hidden" id="guessesLeft"></div>
+                    <div class="my-1 px-1 w-1/2 overflow-hidden">
+                        Word to Guess
+                    </div>
+                    <div class="my-1 px-1 w-1/2 overflow-hidden text-xl" id="word"></div>
                 </div>
             </div>
         </div>
-        <script src="assets/javascript/game.js"></script>
-    </body>
+        <div class="p-4 bg-red-900 m-4 text-center text-orange-300 text-xl border-double border-orange-700 border-8">
+            <div class="flex flex-wrap -mx-px overflow-hidden">
+                <div class="my-px px-px w-1/2 overflow-hidden">
+                    Guesses So Far:
+                </div>
+                <div class="my-px px-px w-1/2 overflow-hidden" id="guesses"></div>
+            </div>
+        </div>
+
+        <div class="flex content-around flex-wrap h-48 justify-center" id="catcontainer">
+            <div class="flex justify-center items-start bg-blue-900 w-48 h-30 rounded-lg" id="catbackground">
+                <div class="bg-orange-500 h-6 w-20 absolute mt-10 z-10" id="ears"></div>
+                <div class="bg-orange-700 rounded-full h-20 w-20 flex items-center justify-center m-8 z-20" id="cathead"></div>
+                <div class="bg-black rounded-full h-2 w-2 absolute z-30 transform -translate-x-4 translate-y-16" id="cateye1"></div>
+                <div class="bg-black rounded-full h-2 w-2 absolute  z-30 transform translate-x-2 translate-y-16" id="cateye2"></div>
+                <div class="bg-red-800 rounded-full h-1 w-1 absolute z-30 transform translate-y-20 font-bold" id="nose"></div>
+                <div class="absolute z-30 transform translate-x-6 translate-y-18 rotate-90" id="whiskers1">V</div>
+                <div class="absolute z-30 transform -translate-x-6 translate-y-18 -rotate-90" id="whiskers2">V</div>
+
+                
+                <div class="hidden absolute z-30 transform translate-y-20 font-bold" id="kissyface">x</div>
+                <div class="hidden absolute z-30 transform translate-y-20 rotate-90 font-bold" id="3">3</div>
+                <div class="hidden absolute z-30 transform translate-y-18 font-bold" id="nope">____</div>
+                <div class="hidden absolute z-30 transform translate-y-20 font-bold rotate-90" id="smile">)</div>
+                
+            </div>
+            
+        </div>
+    </div>
+    <script src="assets/javascript/game.js"></script>
+</body>
+
 </html>
