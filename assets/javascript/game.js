@@ -88,7 +88,7 @@ document.onkeyup = function(event){
                         guesses.push(userGuess);
                         document.getElementById("guessesLeft").innerText = guessCount;
                         document.getElementById("guesses").innerText = guesses;
-                        // nope();
+                        nope();
                     }
                 }
             }
@@ -106,7 +106,6 @@ document.onkeyup = function(event){
             reset();
             gameStart();
             nope();
-            
         }
 
 }
@@ -154,9 +153,9 @@ function letterCorrect() {
     for (var x = 0; x < word.length; x++) {
         if (word[x] === userGuess) {
             solution[x] = userGuess;
-            // kissyface();
             document.getElementById("word").innerText = solution.join('  ');
             wordLength--;
+            kissyface();
         }
     }
 }
@@ -164,10 +163,10 @@ function letterCorrect() {
 function checkIfWin() {
     if (wordLength === 0) {
         win++;
-        // mouth3();
         document.getElementById("word").innerText = solution.join('  ');
         reset();
         audioElement.play();
+        mouth3();
         setTimeout(function () {
             alert('You win!');
         }, 0);
@@ -179,12 +178,11 @@ function checkIfWin() {
 function gameStart() {
     if (word === undefined) {
         word = words[Math.floor(Math.random() * words.length)];
-        console.log(word);
         for (var i = 0; i < word.length; i++) {
             solution[i] = "_ ";
         }
         wordLength = word.length;
-        // smile();
+        smile();
         document.getElementById("word").innerText = solution.join('  ');
     }
     return i;
@@ -197,7 +195,7 @@ function gameStart() {
         correctGuesses = [ ];
         word = undefined;
         wordLength = undefined;
-        // smile();
+        smile();
         document.getElementById("loss").innerText = loss;
         document.getElementById("guessesLeft").innerText = guessCount;
         document.getElementById("win").innerText = win;
