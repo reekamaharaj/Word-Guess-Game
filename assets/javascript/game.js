@@ -86,9 +86,9 @@ document.onkeyup = function(event){
                     else {
                         guessCount--;
                         guesses.push(userGuess);
-                        nope();
                         document.getElementById("guessesLeft").innerText = guessCount;
                         document.getElementById("guesses").innerText = guesses;
+                        // nope();
                     }
                 }
             }
@@ -99,16 +99,15 @@ document.onkeyup = function(event){
 
         }
 
-            // If the guessCount get to zero, then the game is over, the guesses are erased, guessCount is reset and a new word is generated. Game starts over
-            if (guessCount === 0) {
-                loss++;
-                frown();
-                setTimeout(function () {
-                    alert("Sorry, you didn't guess the word.");
-                }, 0);
-                reset();
-                gameStart();
-            }
+        // If the guessCount get to zero, then the game is over, the guesses are erased, guessCount is reset and a new word is generated. Game starts over
+        if (guessCount === 0) {
+            loss++;
+            alert("Sorry, you didn't guess the word.");
+            reset();
+            gameStart();
+            nope();
+            
+        }
 
 }
 
@@ -124,7 +123,6 @@ function kissyface(){
     $('#3').hide();
     $('#nope').hide();
     $('#smile').hide();
-    $('#frown').hide();
 }
 
 function mouth3(){
@@ -132,7 +130,6 @@ function mouth3(){
     $('#3').show();
     $('#nope').hide();
     $('#smile').hide();
-    $('#frown').hide();
 }
 function nope(){
     $('#kissyface').hide();
@@ -147,7 +144,6 @@ function smile(){
     $('#3').hide();
     $('#nope').hide();
     $('#smile').show();
-    $('#frown').hide();
 }
 
 
@@ -158,7 +154,7 @@ function letterCorrect() {
     for (var x = 0; x < word.length; x++) {
         if (word[x] === userGuess) {
             solution[x] = userGuess;
-            kissyface();
+            // kissyface();
             document.getElementById("word").innerText = solution.join('  ');
             wordLength--;
         }
@@ -168,7 +164,7 @@ function letterCorrect() {
 function checkIfWin() {
     if (wordLength === 0) {
         win++;
-        mouth3();
+        // mouth3();
         document.getElementById("word").innerText = solution.join('  ');
         reset();
         audioElement.play();
@@ -188,7 +184,7 @@ function gameStart() {
             solution[i] = "_ ";
         }
         wordLength = word.length;
-        smile();
+        // smile();
         document.getElementById("word").innerText = solution.join('  ');
     }
     return i;
@@ -201,7 +197,7 @@ function gameStart() {
         correctGuesses = [ ];
         word = undefined;
         wordLength = undefined;
-        smile();
+        // smile();
         document.getElementById("loss").innerText = loss;
         document.getElementById("guessesLeft").innerText = guessCount;
         document.getElementById("win").innerText = win;
