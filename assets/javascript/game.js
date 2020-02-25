@@ -193,6 +193,7 @@ function gameStart() {
         guessCount =  10;
         guesses = [ ];
         correctGuesses = [ ];
+        solution = [ ];
         word = undefined;
         wordLength = undefined;
         smile();
