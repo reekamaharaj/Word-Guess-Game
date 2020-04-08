@@ -1,10 +1,21 @@
 # Word-Guess-Game
-Word- Guess-Game is a simple game. The computer picks a word and the user has a certain number of tries to guess that word. This game has a theme of cats, all words are cat related.
+Word Guess Game is a simple game where the player tries to guess a word.
 
-HTML, Tailwind CSS and Javascript
+[Link to page](https://reekamaharaj.github.io/Word-Guess-Game/)
 
-(The cat is all css :D!)
+## Description
+The computer picks a word and the user has a 10 tries to guess the word. The words are related to cats. Watch the little kitties reaction while you play. (Kitty is built with CSS)
 
-Link to page: https://reekamaharaj.github.io/Word-Guess-Game/
+![](assets/images/word.gif)
 
+## Tech used
+- HTML
+- Tailwind CSS 
+- Javascript
+- Visual Studio
+
+## Audio source
 [Audio File from](https://www.zapsplat.com/music/cat-meow-2/)
+
+## Role in Development
+Functionality and Design
