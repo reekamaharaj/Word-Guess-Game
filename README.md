@@ -15,7 +15,7 @@ The computer picks a word and the user has a 10 tries to guess the word. The wor
 - Visual Studio
 
 ## Audio source
-[Audio File from](https://www.zapsplat.com/music/cat-meow-2/)
+[Audio File](https://www.zapsplat.com/music/cat-meow-2/)
 
 ## Role in Development
 Functionality and Design
